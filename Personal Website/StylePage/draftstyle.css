@@ -1,0 +1,45 @@
+header {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .header-container {
+    width: 100%;
+    max-width: 1200px; /* Or your preferred max width */
+    margin: 0 ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img, .social-media img {
+    height: 50px; /* Adjust as needed */
+  }
+  
+  .navigation a, .social-media a {
+    color: white;
+    text-decoration: none;
+    margin-left: 2rem;
+  }
+  
+  .navigation a:hover, .social-media a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .header-container {
+      flex-direction: column;
+    }
+  
+    .navigation a, .social-media a {
+      margin: 0.5rem 0;
+    }
+  }
+  body{
+    margin: 0;
+  }
