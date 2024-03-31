@@ -8,6 +8,7 @@ import { Strategy as localStrategy } from "passport-local";
 
 
 
+
 const app = express();
 const port = 3000;
 const saltRounds = 10;
