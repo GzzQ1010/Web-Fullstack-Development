@@ -67,9 +67,9 @@ app.get("/secrets", async (req, res) => {
       secret="Be the first to add secret.";
     }else{
       const secretNum=Math.floor(Math.random()*(secrets.rowCount-1));
-      secret= secrets.rows[secretNum];
+      secret= secrets.rows[secretNum].secret;
     }
-    console.log(secret);
+    console.log("Position 1",secret);
     res.render("secrets.ejs",{secret:secret});
     //TODO: Update this to pull in the user secret to render in secrets.ejs
   } else {
@@ -79,6 +79,14 @@ app.get("/secrets", async (req, res) => {
 
 //TODO: Add a get route for the submit button
 //Think about how the logic should work with authentication.
+app.get("/submit",(req, res)=>{
+  if(req.isAuthenticated()){
+    res.render("submit.ejs");
+  }else{
+    res.redirect("/login");
+  }
+});
+
 
 app.get(
   "/auth/google",
@@ -138,6 +146,14 @@ app.post("/register", async (req, res) => {
 
 //TODO: Create the post route for submit.
 //Handle the submitted data and add it to the database
+app.post("/submit",async(req,res)=>{
+  const secret=req.body['secret'];
+  console.log("check secrete receive",secret);
+  const email= req.user.email;
+  db.query("UPDATE users SET secret=$1 WHERE email= $2",[secret,email]);
+  console.log(req.user.email);
+  res.send("Secret submitted");
+});
 
 passport.use(
   "local",
