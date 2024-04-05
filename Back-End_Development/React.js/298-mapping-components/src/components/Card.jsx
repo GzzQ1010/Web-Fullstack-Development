@@ -1,16 +1,18 @@
 import React from "react";
-import AvatarImg from "./AvatarImage";
-import Infor from "./infor";
-
+import Avatar from "./Avatar";
+import Detail from "./Detail";
+// key is not a prop
 function Card(props) {
   return (
     <div className="card">
       <div className="top">
+        <p>{props.id}</p>
         <h2 className="name">{props.name}</h2>
-        <AvatarImg img={props.img}/>
+        <Avatar img={props.img} />
       </div>
       <div className="bottom">
-        <Infor tel={props.tel} email={props.email}/>
+        <Detail detailInfo={props.tel} />
+        <Detail detailInfo={props.email} />
       </div>
     </div>
   );
