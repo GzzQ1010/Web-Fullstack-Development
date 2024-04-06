@@ -16,8 +16,10 @@ function ConditionalRender({LogingStatus}){
 }
 function App() {
   return (
-    <div className="container">
-      <ConditionalRender LogingStatus={LogingStatus}/>
+    <div className="container">{
+      LogingStatus?<h1>Hello</h1>:<Login/>
+    }
+      
     </div>
   );
 }
